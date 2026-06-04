@@ -4,42 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Механика — автозапчасти в Анапе</title>
-  <meta name="description" content="Автозапчасти, масла, автохимия и аксессуары для любых марок. Рейтинг 5.0. Анапа, Астраханская 106. Работаем до 23:00">
+  <meta name="description" content="Автозапчасти, масла, автохимия. Рейтинг 5.0. Анапа, Астраханская 106. До 23:00">
 
-  <meta property="og:title" content="Механика — автозапчасти в Анапе">
-  <meta property="og:description" content="Автозапчасти, масла, автохимия и аксессуары для любых марок. Рейтинг 5.0. Анапа, Астраханская 106. Работаем до 23:00">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="Механика">
+  <meta property="og:title"       content="Механика — автозапчасти в Анапе">
+  <meta property="og:description" content="Автозапчасти, масла, автохимия. Рейтинг 5.0. Анапа, Астраханская 106. До 23:00">
+  <meta property="og:type"        content="website">
+  <meta property="og:locale"      content="ru_RU">
+  <meta property="og:site_name"   content="Механика">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Механика — автозапчасти в Анапе">
-  <meta name="twitter:description" content="Автозапчасти, масла, автохимия и аксессуары. Анапа, Астраханская 106. Работаем до 23:00.">
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="Механика — автозапчасти в Анапе">
+  <meta name="twitter:description" content="Автозапчасти, масла, автохимия. Анапа, Астраханская 106. До 23:00.">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0A0A' rx='6'/><text x='4' y='24' font-size='22' font-weight='900' fill='%23FFD600' font-family='Arial,sans-serif'>М</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='4' y='24' font-size='22' font-weight='900' fill='%23FFD600' font-family='Arial,sans-serif'>М</text></svg>">
 
+  <!-- Bowler (downloaded locally from onlinewebfonts) + Oswald fallback for Cyrillic + Fira Sans body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Fira+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* ─── RESET & TOKENS ─────────────────────────────────── */
+    /* Bowler font — local file; Oswald kicks in for any glyphs Bowler lacks (incl. Cyrillic) */
+    @font-face {
+      font-family: 'Bowler';
+      src: url('bowler.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ─── RESET & TOKENS ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:   #0A0A0A;
-      --blue:    #19427D;
-      --white:   #FFFFFF;
-      --lgray:   #F2F2F2;
-      --text:    #0A0A0A;
-      --muted:   #555555;
-      --yellow:  #FFD600;
-      --dark:    #111111;
-      --card-bg: #F8F8F8;
-      --radius:  12px;
-      --sh:      0 4px 20px rgba(0,0,0,0.08);
-      --sh-h:    0 10px 36px rgba(0,0,0,0.15);
-      --nav-h:   70px;
+      --black:  #000000;
+      --blue:   #19427D;
+      --gray:   #A8A8A8;
+      --lgray:  #DDDDDD;
+      --yellow: #FFD600;
+      --white:  #FFFFFF;
+      --f-hero: #F0F0F0;   /* catalog card bg */
+      --f-rev:  #F5F5F5;   /* review card bg  */
+      --nav-h:  68px;
+      --r:      10px;
     }
 
     html { scroll-behavior: smooth; }
@@ -47,7 +54,7 @@
     body {
       font-family: 'Fira Sans', sans-serif;
       background: var(--white);
-      color: var(--text);
+      color: var(--black);
       line-height: 1.65;
       touch-action: manipulation;
       overflow-x: hidden;
@@ -55,83 +62,80 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ─── LOGO ───────────────────────────────────────────── */
+    /* ─── LOGO ─────────────────────────────────────────────── */
     .logo {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      gap: 1px;
       line-height: 1;
       cursor: pointer;
     }
 
     .logo-line {
-      font-weight: 900;
-      letter-spacing: 0.38em;
+      font-family: 'Bowler', 'Oswald', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--white);
       display: block;
+      /* color inherited from parent */
     }
 
-    .logo-svg { display: flex; align-items: center; }
+    .logo-kpp {
+      display: flex;
+      align-items: center;
+    }
 
-    /* nav */
-    .logo-sm .logo-line        { font-size: 11px; }
-    .logo-sm .logo-svg         { margin: 2px 0; }
-    .logo-sm .logo-svg svg     { width: 34px; height: 27px; }
+    /* size variants */
+    .logo-nav  .logo-line  { font-size: 11px; letter-spacing: 0.26em; }
+    .logo-nav  .logo-kpp   { margin: 2px 0; }
+    .logo-nav  .logo-kpp svg { width: 36px; height: 28px; }
 
-    /* hero */
-    .logo-lg .logo-line        { font-size: clamp(28px, 5.5vw, 60px); }
-    .logo-lg .logo-svg         { margin: clamp(7px, 1.3vw, 16px) 0; }
-    .logo-lg .logo-svg svg     { width: clamp(72px, 14vw, 132px); height: clamp(56px, 11vw, 104px); }
+    .logo-hero .logo-line  { font-size: clamp(30px, 6vw, 66px); }
+    .logo-hero .logo-kpp   { margin: clamp(6px, 1.2vw, 14px) 0; }
+    .logo-hero .logo-kpp svg { width: clamp(76px, 15vw, 140px); height: clamp(58px, 11.5vw, 108px); }
 
-    /* footer */
-    .logo-ft .logo-line        { font-size: 11px; color: rgba(255,255,255,0.5); }
-    .logo-ft .logo-svg svg     { width: 34px; height: 27px; opacity: 0.5; }
+    .logo-ft   .logo-line  { font-size: 11px; letter-spacing: 0.26em; }
+    .logo-ft   .logo-kpp   { margin: 2px 0; }
+    .logo-ft   .logo-kpp svg { width: 36px; height: 28px; }
 
-    /* ─── BUTTONS ────────────────────────────────────────── */
+    /* ─── BUTTONS ──────────────────────────────────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 15px 32px;
+      padding: 14px 30px;
       font-family: 'Fira Sans', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       border: none;
       cursor: pointer;
-      border-radius: var(--radius);
-      transition: background .2s, transform .2s, box-shadow .2s, color .2s, border-color .2s;
+      transition: background .18s, transform .18s, box-shadow .18s;
       touch-action: manipulation;
       white-space: nowrap;
     }
 
-    .btn-y { background: var(--yellow); color: var(--black); }
+    .btn-y {
+      background: var(--yellow);
+      color: var(--black);
+    }
     .btn-y:hover {
       background: #ffe033;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255,214,0,0.32);
+      box-shadow: 0 6px 20px rgba(255,214,0,.3);
     }
     .btn-y:active { transform: translateY(0); }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 2px solid #ddd;
-    }
-    .btn-ghost:hover { border-color: var(--yellow); color: var(--text); }
-
-    /* ─── NAV ────────────────────────────────────────────── */
+    /* ─── NAV ──────────────────────────────────────────────── */
     .nav {
       position: fixed;
       inset: 0 0 auto;
       z-index: 1000;
       height: var(--nav-h);
       background: var(--black);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.55);
       display: flex;
       align-items: center;
       padding: 0 clamp(16px, 4vw, 56px);
@@ -147,21 +151,24 @@
       gap: 24px;
     }
 
+    /* nav logo color */
+    .nav .logo { color: var(--white); }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
 
     .nav-links a {
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      color: var(--gray);
       position: relative;
-      transition: color .2s;
+      transition: color .18s;
     }
 
     .nav-links a::after {
@@ -173,12 +180,12 @@
       transition: width .2s;
     }
 
-    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover { color: var(--white); }
     .nav-links a:hover::after { width: 100%; }
 
-    .nav-cta { padding: 10px 22px; font-size: 12px; border-radius: 8px; }
+    .nav-cta { padding: 10px 22px; font-size: 12px; }
 
-    /* burger */
+    /* ─── BURGER ───────────────────────────────────────────── */
     .burger {
       display: none;
       flex-direction: column;
@@ -193,7 +200,7 @@
     .burger span {
       display: block;
       width: 22px; height: 2px;
-      background: #fff;
+      background: var(--white);
       transition: transform .28s, opacity .28s;
       transform-origin: center;
     }
@@ -202,7 +209,7 @@
     .burger.open span:nth-child(2) { opacity: 0; }
     .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* mobile menu */
+    /* ─── MOBILE MENU ──────────────────────────────────────── */
     .mob {
       display: none;
       position: fixed;
@@ -212,311 +219,275 @@
       padding: 20px 24px 28px;
       z-index: 999;
       flex-direction: column;
-      border-bottom: 2px solid var(--yellow);
+      border-bottom: 3px solid var(--yellow);
     }
 
     .mob.open { display: flex; }
 
     .mob a {
       display: block;
-      padding: 15px 0;
+      padding: 14px 0;
       font-size: 15px;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: color .2s;
+      color: rgba(255,255,255,.8);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: color .18s;
     }
 
     .mob a:hover { color: var(--yellow); }
-    .mob .btn { margin-top: 20px; width: 100%; border-radius: 8px; }
+    .mob .btn { margin-top: 20px; width: 100%; }
 
-    /* ─── SECTION SCAFFOLD ───────────────────────────────── */
+    /* ─── SECTION SCAFFOLD ─────────────────────────────────── */
     .sec {
-      padding: clamp(64px, 8vw, 104px) clamp(16px, 4vw, 56px);
+      padding: clamp(60px, 8vw, 100px) clamp(16px, 4vw, 56px);
     }
 
     .wrap { max-width: 1200px; margin: 0 auto; }
 
-    /* Section heading */
-    .sh { margin-bottom: 48px; }
+    /* Section heading — Bowler */
+    .sh { margin-bottom: 44px; }
 
-    .sh-tag {
+    .sh-label {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.38em;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 10px;
+      color: var(--gray);
+      margin-bottom: 8px;
     }
 
-    .sh-tag::before {
+    .sh-label::before {
       content: '';
       display: block;
-      width: 3px; height: 18px;
+      width: 20px; height: 2px;
       background: var(--yellow);
-      border-radius: 2px;
       flex-shrink: 0;
     }
 
     .sh-title {
-      font-size: clamp(24px, 3.5vw, 38px);
-      font-weight: 800;
-      letter-spacing: 0.15em;
+      font-family: 'Bowler', 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(26px, 4vw, 44px);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text);
-      line-height: 1.15;
+      line-height: 1.1;
+      color: var(--black);
     }
 
-    /* light text variant (for dark bg) */
-    .sh-light .sh-tag  { color: rgba(255,255,255,0.5); }
-    .sh-light .sh-title { color: var(--white); }
+    /* light variant for dark bg */
+    .sh-light .sh-label  { color: rgba(255,255,255,.5); }
+    .sh-light .sh-title  { color: var(--white); }
 
-    /* ─── SCROLL ANIMATIONS ──────────────────────────────── */
+    /* ─── SCROLL ANIMATION ─────────────────────────────────── */
     .a {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .55s ease, transform .55s ease;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .a.on  { opacity: 1; transform: none; }
+    .a.d1  { transition-delay: .07s; }
+    .a.d2  { transition-delay: .14s; }
+    .a.d3  { transition-delay: .21s; }
+    .a.d4  { transition-delay: .28s; }
+
+    /* ─── HAZARD DIVIDER (chevron road marking) ────────────── */
+    .hazard {
+      height: 20px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--yellow) 0, var(--yellow) 10px,
+        var(--black)  10px, var(--black)  20px
+      );
+      opacity: 0.55;
     }
 
-    .a.on { opacity: 1; transform: none; }
-    .a.d1 { transition-delay: .08s; }
-    .a.d2 { transition-delay: .16s; }
-    .a.d3 { transition-delay: .24s; }
-    .a.d4 { transition-delay: .32s; }
-
-    /* ─── HERO ───────────────────────────────────────────── */
+    /* ─── HERO ─────────────────────────────────────────────── */
     .hero {
       min-height: 100svh;
+      background: var(--lgray);
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
       padding-top: var(--nav-h);
-      background-color: var(--black);
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 60px 60px;
+      overflow: hidden;
     }
 
-    .hero-glow {
+    /* THREE yellow vertical stripes on the LEFT */
+    .hero-stripes {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 7px;
+      padding: 0 7px 0 10px;
+      pointer-events: none;
+    }
+
+    .hero-stripes span {
+      display: block;
+      width: 13px;
+      background: var(--yellow);
+    }
+
+    /* subtle grid overlay */
+    .hero::after {
+      content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(25,66,125,.17) 0%, transparent 70%);
+      background-image:
+        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
       pointer-events: none;
     }
-
-    .hero-stripe {
-      position: absolute; top: 0; bottom: 0;
-      width: 4px;
-      background: repeating-linear-gradient(
-        to bottom,
-        var(--yellow) 0, var(--yellow) 40px,
-        transparent 40px, transparent 72px
-      );
-      opacity: .42;
-      pointer-events: none;
-    }
-
-    .hero-stripe.l { left: clamp(18px, 5vw, 80px); }
-    .hero-stripe.r { right: clamp(18px, 5vw, 80px); }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      text-align: center;
-      padding: 40px 20px;
-      max-width: 840px;
       width: 100%;
-    }
-
-    .hero-sup {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 36px;
-      opacity: .85;
-    }
-
-    .hero-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px clamp(16px, 4vw, 56px);
+      /* shift right to avoid stripes */
+      padding-left: clamp(70px, 10vw, 120px);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin: clamp(16px, 2.5vw, 28px) auto;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
     }
 
-    .hero-bar em { display: block; height: 3px; background: var(--yellow); }
-    .hero-bar em:nth-child(1), .hero-bar em:nth-child(3) { width: 40px; opacity: .3; }
-    .hero-bar em:nth-child(2) { width: 100px; }
+    /* hero logo: black on gray bg */
+    .hero .logo { color: var(--black); }
 
-    .hero-tagline {
-      font-size: clamp(13px, 2.2vw, 17px);
+    .hero-sub {
+      font-family: 'Fira Sans', sans-serif;
+      font-size: clamp(14px, 2vw, 18px);
       font-weight: 700;
-      letter-spacing: .2em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.88);
-      margin-bottom: 14px;
+      color: var(--black);
+      margin-top: clamp(20px, 3vw, 32px);
+      margin-bottom: 10px;
     }
 
-    .hero-desc {
+    .hero-addr {
       font-size: clamp(14px, 1.8vw, 16px);
-      color: rgba(255,255,255,.5);
-      max-width: 500px;
-      margin: 0 auto 36px;
-      line-height: 1.8;
+      color: #444;
+      margin-bottom: clamp(28px, 4vw, 40px);
     }
 
-    .hero-desc strong { color: rgba(255,255,255,.8); }
-
-    /* bounce arrow */
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(10px); }
-    }
-
-    .scroll-arrow {
-      position: absolute;
-      bottom: 28px; left: 50%;
-      transform: translateX(-50%);
-      background: none; border: none;
-      cursor: pointer;
-      animation: bounce 2.4s ease-in-out infinite;
-      padding: 8px;
-      opacity: .65;
-      transition: opacity .2s;
-    }
-
-    .scroll-arrow:hover { opacity: 1; }
-
-    /* ─── CATALOG ────────────────────────────────────────── */
-    .catalog { background: var(--lgray); }
+    /* ─── CATALOG ──────────────────────────────────────────── */
+    .catalog { background: var(--white); }
 
     .cat-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 16px;
       margin-bottom: 32px;
     }
 
     .cat-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--sh);
-      padding: 28px 20px 24px;
+      background: var(--f-hero);
+      padding: 26px 18px 22px;
       text-align: center;
-      border-top: 3px solid transparent;
-      transition: transform .22s, box-shadow .22s, border-top-color .22s;
+      cursor: default;
+      transition: box-shadow .22s, transform .22s;
+      box-shadow: none;
     }
 
     .cat-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--sh-h);
-      border-top-color: var(--yellow);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.12);
     }
 
-    .cat-emoji { font-size: 36px; display: block; margin-bottom: 12px; }
+    .cat-emoji { font-size: 34px; display: block; margin-bottom: 10px; }
 
     .cat-name {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: .06em;
+      letter-spacing: .07em;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--black);
       line-height: 1.35;
     }
 
     .cat-cta {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--sh);
-      padding: 26px 32px;
+      background: var(--f-hero);
+      border-left: 4px solid var(--yellow);
+      padding: 24px 28px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      border-left: 4px solid var(--yellow);
     }
 
-    .cat-cta p { font-size: 15px; color: var(--muted); }
-    .cat-cta strong { color: var(--text); }
+    .cat-cta p { font-size: 15px; color: #444; }
+    .cat-cta strong { color: var(--black); }
 
-    /* ─── PROMOS ─────────────────────────────────────────── */
-    .promos { background: var(--white); }
+    /* ─── PROMOS ───────────────────────────────────────────── */
+    .promos { background: var(--lgray); }
 
     .promo-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
     .promo-card {
       background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--sh);
-      padding: 36px 32px;
-      border-left: 4px solid var(--yellow);
+      padding: 34px 30px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
       transition: transform .22s, box-shadow .22s;
     }
 
     .promo-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--sh-h);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px rgba(0,0,0,.14);
     }
 
-    .promo-emoji { font-size: 42px; display: block; margin-bottom: 14px; }
+    .promo-emoji { font-size: 40px; display: block; margin-bottom: 12px; }
 
     .promo-title {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: .1em;
+      font-family: 'Bowler', 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      color: var(--black);
+      margin-bottom: 10px;
+      line-height: 1.25;
     }
 
     .promo-desc {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.72;
-      margin-bottom: 18px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
 
-    .promo-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .promo-date {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: #7a6000;
-      background: rgba(255,214,0,.18);
-      border: 1px solid rgba(255,214,0,.45);
-      padding: 5px 13px;
-      border-radius: 6px;
+      color: #888;
+      border-top: 1px solid #eee;
+      padding-top: 12px;
     }
 
-    /* ─── WHY US ─────────────────────────────────────────── */
+    /* ─── WHY US ───────────────────────────────────────────── */
     .why { background: var(--blue); }
 
     .why-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
+      gap: 1px;
       background: rgba(255,255,255,.12);
-      border-radius: var(--radius);
-      overflow: hidden;
     }
 
     .why-item {
@@ -526,15 +497,16 @@
       transition: background .2s;
     }
 
-    .why-item:hover { background: #1b4b92; }
+    .why-item:hover { background: #1b4d96; }
 
-    .why-emoji { font-size: 38px; display: block; margin-bottom: 10px; }
+    .why-emoji { font-size: 36px; display: block; margin-bottom: 10px; }
 
     .why-num {
-      font-size: clamp(32px, 4.5vw, 52px);
-      font-weight: 900;
+      font-family: 'Bowler', 'Oswald', sans-serif;
+      font-size: clamp(34px, 4.5vw, 54px);
+      font-weight: 700;
       color: var(--yellow);
-      letter-spacing: .03em;
+      letter-spacing: .04em;
       line-height: 1;
       margin-bottom: 8px;
     }
@@ -545,75 +517,75 @@
       line-height: 1.55;
     }
 
-    /* ─── REVIEWS ────────────────────────────────────────── */
+    /* ─── REVIEWS ──────────────────────────────────────────── */
     .reviews { background: var(--white); }
 
     .rev-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     .rev-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--sh);
-      padding: 28px 24px;
+      background: var(--f-rev);
+      padding: 26px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
       transition: transform .22s, box-shadow .22s;
+      position: relative;
     }
 
     .rev-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--sh-h);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0,0,0,.12);
     }
 
     .rev-quote {
       display: block;
-      font-size: 60px;
+      font-size: 56px;
       color: var(--yellow);
       font-family: Georgia, serif;
-      line-height: 0.8;
-      margin-bottom: 14px;
+      line-height: 0.85;
+      margin-bottom: 12px;
     }
 
     .rev-stars { display: flex; gap: 3px; margin-bottom: 12px; }
-    .rev-stars span { font-size: 14px; color: var(--yellow); }
+    .rev-stars span { font-size: 13px; color: var(--yellow); }
 
     .rev-text {
       font-size: 14px;
       font-style: italic;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 20px;
+      color: #555;
+      line-height: 1.72;
+      margin-bottom: 18px;
     }
 
-    .rev-author {
-      font-size: 13px;
+    .rev-name {
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--black);
     }
 
     .rev-src { font-size: 11px; color: #aaa; margin-top: 3px; }
 
-    .rev-all-link {
+    .rev-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--blue);
       border-bottom: 2px solid var(--yellow);
-      padding-bottom: 3px;
-      transition: color .2s;
+      padding-bottom: 2px;
+      transition: color .18s;
     }
 
-    .rev-all-link:hover { color: var(--black); }
+    .rev-link:hover { color: var(--black); }
 
-    /* ─── CONTACTS ───────────────────────────────────────── */
-    .contacts { background: var(--dark); }
+    /* ─── CONTACTS ─────────────────────────────────────────── */
+    .contacts { background: var(--black); }
 
     .contacts-grid {
       display: grid;
@@ -623,7 +595,7 @@
     }
 
     .ci {
-      padding: 18px 0;
+      padding: 16px 0;
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
@@ -632,8 +604,8 @@
       font-weight: 700;
       letter-spacing: .35em;
       text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 6px;
+      color: var(--gray);
+      margin-bottom: 5px;
     }
 
     .ci-val {
@@ -642,32 +614,31 @@
       color: var(--white);
     }
 
-    .ci-val a { color: var(--white); transition: color .2s; }
+    .ci-val a { color: var(--white); transition: color .18s; }
     .ci-val a:hover { color: var(--yellow); }
 
-    .c-btns-label {
+    .c-label {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: .32em;
+      letter-spacing: .3em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.35);
+      color: var(--gray);
       margin-bottom: 12px;
     }
 
-    .c-btns { display: flex; flex-direction: column; gap: 10px; }
+    .c-btns { display: flex; flex-direction: column; gap: 8px; }
 
     .c-btn {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 15px 20px;
+      padding: 14px 18px;
       background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.09);
       color: rgba(255,255,255,.8);
       font-size: 13px;
       font-weight: 600;
-      transition: background .2s, border-color .2s, color .2s, transform .2s;
+      transition: background .18s, border-color .18s, color .18s, transform .18s;
     }
 
     .c-btn:hover {
@@ -677,15 +648,14 @@
       transform: translateX(5px);
     }
 
-    .c-btn-icon { font-size: 22px; flex-shrink: 0; }
-    .c-btn-name { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .c-btn-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 1px; font-weight: 400; }
-    .c-btn:hover .c-btn-sub { color: rgba(255,214,0,.6); }
+    .c-icon { font-size: 22px; flex-shrink: 0; }
+    .c-name { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .c-sub  { font-size: 11px; color: rgba(255,255,255,.32); margin-top: 1px; }
+    .c-btn:hover .c-sub { color: rgba(255,214,0,.55); }
 
-    /* ─── FOOTER ─────────────────────────────────────────── */
+    /* ─── FOOTER ────────────────────────────────────────────── */
     .footer {
-      background: var(--black);
-      border-top: 1px solid rgba(255,255,255,.05);
+      background: var(--blue);
       padding: 44px clamp(16px, 4vw, 56px);
     }
 
@@ -695,80 +665,82 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
     }
+
+    /* footer logo: white on blue */
+    .footer .logo { color: var(--white); }
 
     .footer-nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 14px 36px;
+      gap: 12px 36px;
       list-style: none;
     }
 
     .footer-nav a {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: .22em;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.3);
-      transition: color .2s;
+      color: rgba(255,255,255,.5);
+      transition: color .18s;
     }
 
     .footer-nav a:hover { color: var(--yellow); }
 
-    .footer-copy { font-size: 11px; color: rgba(255,255,255,.18); letter-spacing: .06em; }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,.25);
+      letter-spacing: .06em;
+    }
 
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 960px) {
-      .cat-grid  { grid-template-columns: repeat(4, 1fr); }
-      .why-grid  { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
       .rev-grid  { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
       .burger { display: flex; }
-      .promo-grid     { grid-template-columns: 1fr; }
-      .contacts-grid  { grid-template-columns: 1fr; gap: 40px; }
-      .cat-cta        { flex-direction: column; align-items: flex-start; }
-      .cat-cta .btn   { width: 100%; }
-      .rev-grid       { grid-template-columns: 1fr; }
+      .promo-grid    { grid-template-columns: 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cat-cta       { flex-direction: column; align-items: flex-start; }
+      .cat-cta .btn  { width: 100%; }
+      .rev-grid      { grid-template-columns: 1fr; }
+      .hero-content  { padding-left: clamp(58px, 12vw, 90px); }
     }
 
     @media (max-width: 540px) {
-      .cat-grid  { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .why-grid  { grid-template-columns: repeat(2, 1fr); }
-      .hero-stripe.l { left: 10px; }
-      .hero-stripe.r { right: 10px; }
+      .cat-grid      { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .why-grid      { grid-template-columns: repeat(2, 1fr); }
+      .hero-stripes span { width: 10px; }
     }
 
     @media (max-width: 360px) {
-      .cat-card  { padding: 20px 14px; }
-      .cat-emoji { font-size: 28px; }
-      .promo-card { padding: 26px 18px; }
+      .cat-card      { padding: 18px 12px; }
+      .cat-emoji     { font-size: 26px; }
+      .hero-stripes  { gap: 4px; padding: 0 4px 0 6px; }
+      .hero-stripes span { width: 8px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════ NAV ══════════════════════════════ -->
+<!-- ═══════════════════════ NAV ══════════════════════════════ -->
 <nav class="nav">
   <div class="nav-in">
-    <a href="#home" class="logo logo-sm" aria-label="Механика — на главную">
+
+    <a href="#home" class="logo logo-nav" aria-label="Механика — на главную">
       <span class="logo-line">М Е Х А</span>
-      <span class="logo-svg">
+      <span class="logo-kpp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 42" fill="none" aria-hidden="true">
-          <line x1="3"  y1="21" x2="51" y2="21" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="10" y1="4"  x2="10" y2="38" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="27" y1="4"  x2="27" y2="38" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="44" y1="4"  x2="44" y2="38" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <circle cx="10" cy="4"  r="3.4" fill="#FFD600"/>
-          <circle cx="27" cy="4"  r="3.4" fill="#FFD600"/>
-          <circle cx="44" cy="4"  r="3.4" fill="#FFD600"/>
-          <circle cx="10" cy="38" r="3.4" fill="#FFD600"/>
-          <circle cx="27" cy="38" r="3.4" fill="#FFD600"/>
-          <circle cx="44" cy="38" r="3.4" fill="#FFD600"/>
+          <line x1="3"  y1="21" x2="51" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+          <line x1="11" y1="3"  x2="11" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+          <line x1="27" y1="3"  x2="27" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+          <line x1="43" y1="3"  x2="43" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
         </svg>
       </span>
       <span class="logo-line">Н И К А</span>
@@ -787,6 +759,7 @@
     <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+
   </div>
 </nav>
 
@@ -801,66 +774,50 @@
 </div>
 
 
-<!-- ══════════════════════ HERO ═════════════════════════════ -->
+<!-- ═══════════════════════ HERO (gray #DDDDDD) ══════════════ -->
 <section class="hero" id="home">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-stripe l" aria-hidden="true"></div>
-  <div class="hero-stripe r" aria-hidden="true"></div>
 
-  <div class="hero-content">
-    <span class="hero-sup a">Анапа · Астраханская 106</span>
-
-    <div class="a d1">
-      <div class="logo logo-lg" aria-label="Механика">
-        <span class="logo-line">М Е Х А</span>
-        <span class="logo-svg">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 42" fill="none" aria-hidden="true">
-            <line x1="3"  y1="21" x2="51" y2="21" stroke="#FFD600" stroke-width="2.8" stroke-linecap="round"/>
-            <line x1="10" y1="4"  x2="10" y2="38" stroke="#FFD600" stroke-width="2.8" stroke-linecap="round"/>
-            <line x1="27" y1="4"  x2="27" y2="38" stroke="#FFD600" stroke-width="2.8" stroke-linecap="round"/>
-            <line x1="44" y1="4"  x2="44" y2="38" stroke="#FFD600" stroke-width="2.8" stroke-linecap="round"/>
-            <circle cx="10" cy="4"  r="4" fill="#FFD600"/>
-            <circle cx="27" cy="4"  r="4" fill="#FFD600"/>
-            <circle cx="44" cy="4"  r="4" fill="#FFD600"/>
-            <circle cx="10" cy="38" r="4" fill="#FFD600"/>
-            <circle cx="27" cy="38" r="4" fill="#FFD600"/>
-            <circle cx="44" cy="38" r="4" fill="#FFD600"/>
-          </svg>
-        </span>
-        <span class="logo-line">Н И К А</span>
-      </div>
-    </div>
-
-    <div class="hero-bar a d2" aria-hidden="true"><em></em><em></em><em></em></div>
-
-    <p class="hero-tagline a d2">Ваш универсальный магазин автозапчастей</p>
-
-    <p class="hero-desc a d3">
-      Автозапчасти, автокосметика, автохимия и аксессуары для любых марок.<br>
-      <strong>Анапа, Астраханская 106</strong>
-    </p>
-
-    <div class="a d4">
-      <a href="https://t.me/mehanika_anapa_bot" target="_blank" rel="noopener noreferrer"
-         class="btn btn-y" style="font-size:15px;padding:17px 38px;">Подобрать запчасти →</a>
-    </div>
+  <!-- 3 yellow vertical stripes — left edge, like brand ref p.4 -->
+  <div class="hero-stripes" aria-hidden="true">
+    <span></span><span></span><span></span>
   </div>
 
-  <button class="scroll-arrow" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})"
-          aria-label="Прокрутить вниз">
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <circle cx="18" cy="18" r="17" stroke="#FFD600" stroke-width="1.5" opacity=".5"/>
-      <path d="M12 16l6 6 6-6" stroke="#FFD600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
+  <div class="hero-content">
+
+    <div class="logo logo-hero a" aria-label="Механика">
+      <span class="logo-line">М Е Х А</span>
+      <span class="logo-kpp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 42" fill="none" aria-hidden="true">
+          <line x1="3"  y1="21" x2="51" y2="21" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+          <line x1="11" y1="3"  x2="11" y2="39" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+          <line x1="27" y1="3"  x2="27" y2="39" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+          <line x1="43" y1="3"  x2="43" y2="39" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+        </svg>
+      </span>
+      <span class="logo-line">Н И К А</span>
+    </div>
+
+    <p class="hero-sub a d1">Ваш универсальный магазин автозапчастей</p>
+    <p class="hero-addr a d2">Анапа, Астраханская 106</p>
+
+    <div class="a d3">
+      <a href="https://t.me/mehanika_anapa_bot" target="_blank" rel="noopener noreferrer"
+         class="btn btn-y" style="font-size:14px;padding:16px 36px;">Подобрать запчасти →</a>
+    </div>
+
+  </div>
 </section>
 
+<!-- hazard divider -->
+<div class="hazard" aria-hidden="true"></div>
 
-<!-- ══════════════════════ CATALOG ══════════════════════════ -->
+
+<!-- ═══════════════════════ CATALOG (white) ══════════════════ -->
 <section class="sec catalog" id="catalog">
   <div class="wrap">
+
     <div class="sh a">
-      <div class="sh-tag">Каталог</div>
+      <div class="sh-label">Каталог</div>
       <h2 class="sh-title">Наши категории</h2>
     </div>
 
@@ -876,19 +833,24 @@
     </div>
 
     <div class="cat-cta a">
-      <p>Не нашли нужное? <strong>Напишите боту — подберём по VIN</strong></p>
+      <p>Подберём по VIN — <strong>напишите нашему боту</strong></p>
       <a href="https://t.me/mehanika_anapa_bot" target="_blank" rel="noopener noreferrer"
          class="btn btn-y">Написать боту →</a>
     </div>
+
   </div>
 </section>
 
+<!-- hazard divider -->
+<div class="hazard" aria-hidden="true"></div>
 
-<!-- ══════════════════════ PROMOS ════════════════════════════ -->
+
+<!-- ═══════════════════════ PROMOS (gray #DDDDDD) ═══════════ -->
 <section class="sec promos" id="promos">
   <div class="wrap">
+
     <div class="sh a">
-      <div class="sh-tag">Акции</div>
+      <div class="sh-label">Акции</div>
       <h2 class="sh-title">Текущие предложения</h2>
     </div>
 
@@ -900,28 +862,32 @@
         <p class="promo-desc">
           Купите у нас любой аккумулятор и получите купон на бесплатное полное сервисное обслуживание батареи. Даже при глубоком разряде!
         </p>
-        <div class="promo-badge">⏱ До 31.08.2026</div>
+        <div class="promo-date">⏱ До 31.08.2026</div>
       </div>
 
       <div class="promo-card a d2">
         <span class="promo-emoji">💰</span>
         <div class="promo-title">Кешбэк до 9% с каждой покупки</div>
         <p class="promo-desc">
-          Держатели карт нашего магазина получают до 7% бонусами, а по спецакции — до 9% на личный счёт!
+          Держатели карт получают до 7% бонусами, а по спецакции — до 9% на личный счёт!
         </p>
-        <div class="promo-badge">⏱ До 31.08.2026</div>
+        <div class="promo-date">⏱ До 31.08.2026</div>
       </div>
 
     </div>
   </div>
 </section>
 
+<!-- hazard divider -->
+<div class="hazard" aria-hidden="true"></div>
 
-<!-- ══════════════════════ WHY US ════════════════════════════ -->
+
+<!-- ═══════════════════════ WHY US (blue #19427D) ════════════ -->
 <section class="sec why" id="why">
   <div class="wrap">
+
     <div class="sh sh-light a">
-      <div class="sh-tag">Преимущества</div>
+      <div class="sh-label">Преимущества</div>
       <h2 class="sh-title">Почему выбирают нас</h2>
     </div>
 
@@ -933,7 +899,7 @@
       </div>
       <div class="why-item a d2">
         <span class="why-emoji">🕐</span>
-        <div class="why-num">до&nbsp;23:00</div>
+        <div class="why-num">до 23:00</div>
         <p class="why-text">Работаем ежедневно с 08:00 до 23:00, без выходных</p>
       </div>
       <div class="why-item a d3">
@@ -947,15 +913,20 @@
         <p class="why-text">Бот-консультант подберёт запчасти по VIN без звонков</p>
       </div>
     </div>
+
   </div>
 </section>
 
+<!-- hazard divider -->
+<div class="hazard" aria-hidden="true"></div>
 
-<!-- ══════════════════════ REVIEWS ══════════════════════════ -->
+
+<!-- ═══════════════════════ REVIEWS (white) ══════════════════ -->
 <section class="sec reviews" id="reviews">
   <div class="wrap">
+
     <div class="sh a">
-      <div class="sh-tag">Отзывы</div>
+      <div class="sh-label">Отзывы</div>
       <h2 class="sh-title">Что говорят клиенты</h2>
     </div>
 
@@ -965,9 +936,9 @@
         <span class="rev-quote">"</span>
         <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="rev-text">
-          Срочно понадобились расходники для ТО перед дальней поездкой. В других местах нужно ждать три дня, а здесь всё в наличии. Цены человеческие, персонал приветливый.
+          Срочно понадобились расходники для ТО. В других местах ждать три дня, а здесь всё в наличии. Цены человеческие, персонал приветливый.
         </p>
-        <div class="rev-author">Дарья Ф.</div>
+        <div class="rev-name">Дарья Ф.</div>
         <div class="rev-src">Яндекс Карты · 5.0 ★</div>
       </div>
 
@@ -975,9 +946,9 @@
         <span class="rev-quote">"</span>
         <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="rev-text">
-          Огромный выбор! Пришёл с непонятным стуком — ребята объяснили, какие детали чаще виноваты, подобрали аналог по адекватной цене. Без навязывания!
+          Огромный выбор! Ребята объяснили какие детали чаще виноваты, подобрали аналог по адекватной цене. Без навязывания!
         </p>
-        <div class="rev-author">Вячеслав И.</div>
+        <div class="rev-name">Вячеслав И.</div>
         <div class="rev-src">Яндекс Карты · 5.0 ★</div>
       </div>
 
@@ -985,33 +956,38 @@
         <span class="rev-quote">"</span>
         <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="rev-text">
-          Всегда есть всё что нужно, вежливый и дружелюбный персонал, хорошие цены. Рекомендую всем автовладельцам!
+          Всегда есть всё что нужно, вежливый персонал, хорошие цены. Рекомендую!
         </p>
-        <div class="rev-author">Анастасия Р.</div>
+        <div class="rev-name">Анастасия Р.</div>
         <div class="rev-src">Яндекс Карты · 5.0 ★</div>
       </div>
 
     </div>
 
-    <a href="https://yandex.ru/maps/-/CPTwbQOn" target="_blank" rel="noopener noreferrer"
-       class="rev-all-link a">
-      Читать все 172 отзыва на Яндекс Картах →
-    </a>
+    <div class="a">
+      <a href="https://yandex.ru/maps/-/CPTwbQOn" target="_blank" rel="noopener noreferrer"
+         class="rev-link">Читать все 172 отзыва на Яндекс Картах →</a>
+    </div>
+
   </div>
 </section>
 
+<!-- hazard divider -->
+<div class="hazard" aria-hidden="true"></div>
 
-<!-- ══════════════════════ CONTACTS ═════════════════════════ -->
+
+<!-- ═══════════════════════ CONTACTS (black) ═════════════════ -->
 <section class="sec contacts" id="contacts">
   <div class="wrap">
+
     <div class="sh sh-light a">
-      <div class="sh-tag">Контакты</div>
+      <div class="sh-label">Контакты</div>
       <h2 class="sh-title">Как нас найти</h2>
     </div>
 
     <div class="contacts-grid">
 
-      <!-- Left -->
+      <!-- Left: info -->
       <div class="a">
         <div class="ci">
           <div class="ci-label">Адрес</div>
@@ -1027,41 +1003,29 @@
         </div>
       </div>
 
-      <!-- Right -->
+      <!-- Right: buttons -->
       <div class="a d2">
-        <div class="c-btns-label">Написать нам</div>
+        <div class="c-label">Написать нам</div>
         <div class="c-btns">
 
           <a href="https://t.me/+79181072107" target="_blank" rel="noopener noreferrer" class="c-btn">
-            <span class="c-btn-icon">✈️</span>
-            <div>
-              <div class="c-btn-name">Telegram</div>
-              <div class="c-btn-sub">t.me/+79181072107</div>
-            </div>
+            <span class="c-icon">✈️</span>
+            <div><div class="c-name">Telegram</div><div class="c-sub">t.me/+79181072107</div></div>
           </a>
 
           <a href="https://wa.me/79181072107" target="_blank" rel="noopener noreferrer" class="c-btn">
-            <span class="c-btn-icon">💬</span>
-            <div>
-              <div class="c-btn-name">WhatsApp</div>
-              <div class="c-btn-sub">wa.me/79181072107</div>
-            </div>
+            <span class="c-icon">💬</span>
+            <div><div class="c-name">WhatsApp</div><div class="c-sub">wa.me/79181072107</div></div>
           </a>
 
           <a href="https://t.me/mehanika_anapa_bot" target="_blank" rel="noopener noreferrer" class="c-btn">
-            <span class="c-btn-icon">🤖</span>
-            <div>
-              <div class="c-btn-name">Telegram-бот</div>
-              <div class="c-btn-sub">t.me/mehanika_anapa_bot</div>
-            </div>
+            <span class="c-icon">🤖</span>
+            <div><div class="c-name">Telegram-бот</div><div class="c-sub">t.me/mehanika_anapa_bot</div></div>
           </a>
 
           <a href="https://yandex.ru/maps/-/CPTwbQOn" target="_blank" rel="noopener noreferrer" class="c-btn">
-            <span class="c-btn-icon">📍</span>
-            <div>
-              <div class="c-btn-name">Яндекс Карты</div>
-              <div class="c-btn-sub">Открыть маршрут</div>
-            </div>
+            <span class="c-icon">📍</span>
+            <div><div class="c-name">Яндекс Карты</div><div class="c-sub">Открыть маршрут</div></div>
           </a>
 
         </div>
@@ -1072,24 +1036,18 @@
 </section>
 
 
-<!-- ══════════════════════ FOOTER ═══════════════════════════ -->
+<!-- ═══════════════════════ FOOTER (blue #19427D) ═══════════ -->
 <footer class="footer">
   <div class="footer-in">
 
-    <a href="#home" class="logo logo-sm logo-ft" aria-label="Механика — наверх">
+    <a href="#home" class="logo logo-ft" aria-label="Механика — наверх">
       <span class="logo-line">М Е Х А</span>
-      <span class="logo-svg">
+      <span class="logo-kpp" style="margin:2px 0;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 42" fill="none" aria-hidden="true">
-          <line x1="3"  y1="21" x2="51" y2="21" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="10" y1="4"  x2="10" y2="38" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="27" y1="4"  x2="27" y2="38" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="44" y1="4"  x2="44" y2="38" stroke="#FFD600" stroke-width="2.4" stroke-linecap="round"/>
-          <circle cx="10" cy="4"  r="3.4" fill="#FFD600"/>
-          <circle cx="27" cy="4"  r="3.4" fill="#FFD600"/>
-          <circle cx="44" cy="4"  r="3.4" fill="#FFD600"/>
-          <circle cx="10" cy="38" r="3.4" fill="#FFD600"/>
-          <circle cx="27" cy="38" r="3.4" fill="#FFD600"/>
-          <circle cx="44" cy="38" r="3.4" fill="#FFD600"/>
+          <line x1="3"  y1="21" x2="51" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+          <line x1="11" y1="3"  x2="11" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+          <line x1="27" y1="3"  x2="27" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+          <line x1="43" y1="3"  x2="43" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
         </svg>
       </span>
       <span class="logo-line">Н И К А</span>
@@ -1102,13 +1060,14 @@
       <li><a href="#contacts">Контакты</a></li>
     </ul>
 
-    <p class="footer-copy">© 2026 Механика — автозапчасти в Анапе &nbsp;·&nbsp; Астраханская 106</p>
+    <p class="footer-copy">© 2026 Механика — автозапчасти в Анапе · Астраханская 106</p>
+
   </div>
 </footer>
 
 
 <script>
-  /* ── BURGER ─────────────────────────────────────────────── */
+  /* ── BURGER ──────────────────────────────────────────────── */
   const burger = document.getElementById('burger');
   const mob    = document.getElementById('mob');
 
@@ -1130,30 +1089,19 @@
     if (!burger.contains(e.target) && !mob.contains(e.target)) closeMob();
   });
 
-  /* ── SCROLL ANIMATIONS ──────────────────────────────────── */
+  /* ── SCROLL ANIMATIONS ───────────────────────────────────── */
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
 
   document.querySelectorAll('.a').forEach(el => io.observe(el));
 
-  /* ── NAV ACTIVE LINK ────────────────────────────────────── */
-  const sections = document.querySelectorAll('section[id]');
-  const navAs    = document.querySelectorAll('.nav-links a');
+  /* ── ACTIVE NAV LINK ─────────────────────────────────────── */
+  const navAs = document.querySelectorAll('.nav-links a');
 
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navAs.forEach(a => a.style.color = '');
-        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (active) active.style.color = 'var(--yellow)';
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' }).observe;
-
-  sections.forEach(s => {
+  document.querySelectorAll('section[id]').forEach(sec => {
     new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -1162,7 +1110,7 @@
           if (active) active.style.color = 'var(--yellow)';
         }
       });
-    }, { rootMargin: '-40% 0px -55% 0px' }).observe(s);
+    }, { rootMargin: '-38% 0px -58% 0px' }).observe(sec);
   });
 </script>
 
