@@ -63,42 +63,22 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ─── LOGO ─────────────────────────────────────────────── */
+    /* ─── LOGO (единый SVG: буквы + схема КПП) ─────────────── */
     .logo {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1px;
-      line-height: 1;
+      display: inline-block;
+      line-height: 0;
       cursor: pointer;
     }
 
-    .logo-line {
-      font-family: 'Bowler', 'Oswald', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      display: block;
-      /* color inherited from parent */
-    }
+    /* размеры по контексту */
+    .logo-nav  svg { height: 54px;  width: auto; display: block; }
+    .logo-hero svg { height: clamp(110px, 17vw, 240px); width: auto; display: block; }
+    .logo-ft   svg { height: 50px;  width: auto; display: block; }
 
-    .logo-kpp {
-      display: flex;
-      align-items: center;
-    }
-
-    /* size variants */
-    .logo-nav  .logo-line  { font-size: 11px; letter-spacing: 0.26em; }
-    .logo-nav  .logo-kpp   { margin: 2px 0; }
-    .logo-nav  .logo-kpp svg { width: 36px; height: auto; }
-
-    .logo-hero .logo-line  { font-size: clamp(30px, 6vw, 66px); }
-    .logo-hero .logo-kpp   { margin: clamp(6px, 1.2vw, 14px) 0; }
-    .logo-hero .logo-kpp svg { width: clamp(76px, 15vw, 140px); height: auto; }
-
-    .logo-ft   .logo-line  { font-size: 11px; letter-spacing: 0.26em; }
-    .logo-ft   .logo-kpp   { margin: 2px 0; }
-    .logo-ft   .logo-kpp svg { width: 36px; height: auto; }
+    /* цвет: SVG использует currentColor */
+    .nav    .logo { color: var(--white); }
+    .hero   .logo { color: var(--black); }
+    .footer .logo { color: rgba(255,255,255,.55); }
 
     /* ─── BUTTONS ──────────────────────────────────────────── */
     .btn {
@@ -735,16 +715,22 @@
   <div class="nav-in">
 
     <a href="#home" class="logo logo-nav" aria-label="Механика — на главную">
-      <span class="logo-line">М Е Х А</span>
-      <span class="logo-kpp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 48" fill="none" aria-hidden="true">
-          <line x1="4"  y1="24" x2="50" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-          <line x1="11" y1="19" x2="11" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-          <line x1="27" y1="4"  x2="27" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-          <line x1="43" y1="4"  x2="43" y2="29" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-        </svg>
-      </span>
-      <span class="logo-line">Н И К А</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 222" fill="none">
+        <!-- М Е Х А -->
+        <text font-family="'Bowler','Oswald',sans-serif" font-weight="700" font-size="62"
+              letter-spacing="16" fill="currentColor" text-anchor="middle" x="180" y="68">М Е Х А</text>
+        <!-- горизонтальная перекладина (y=76 = 1/3 от спана y=8–210) -->
+        <line x1="22"  y1="76" x2="338" y2="76"  stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <!-- левая: короткое вверх 40px (y=36), длинное вниз 134px (y=210) -->
+        <line x1="100" y1="36" x2="100" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <!-- средняя: от уровня МЕХА (y=8) до уровня НИКА (y=210) -->
+        <line x1="180" y1="8"  x2="180" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <!-- правая: то же что средняя -->
+        <line x1="260" y1="8"  x2="260" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <!-- Н И К А -->
+        <text font-family="'Bowler','Oswald',sans-serif" font-weight="700" font-size="62"
+              letter-spacing="16" fill="currentColor" text-anchor="middle" x="180" y="210">Н И К А</text>
+      </svg>
     </a>
 
     <ul class="nav-links">
@@ -786,16 +772,16 @@
   <div class="hero-content">
 
     <div class="logo logo-hero a" aria-label="Механика">
-      <span class="logo-line">М Е Х А</span>
-      <span class="logo-kpp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 48" fill="none" aria-hidden="true">
-          <line x1="4"  y1="24" x2="50" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
-          <line x1="11" y1="19" x2="11" y2="44" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
-          <line x1="27" y1="4"  x2="27" y2="44" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
-          <line x1="43" y1="4"  x2="43" y2="29" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
-        </svg>
-      </span>
-      <span class="logo-line">Н И К А</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 222" fill="none">
+        <text font-family="'Bowler','Oswald',sans-serif" font-weight="700" font-size="62"
+              letter-spacing="16" fill="currentColor" text-anchor="middle" x="180" y="68">М Е Х А</text>
+        <line x1="22"  y1="76" x2="338" y2="76"  stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <line x1="100" y1="36" x2="100" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <line x1="180" y1="8"  x2="180" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <line x1="260" y1="8"  x2="260" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <text font-family="'Bowler','Oswald',sans-serif" font-weight="700" font-size="62"
+              letter-spacing="16" fill="currentColor" text-anchor="middle" x="180" y="210">Н И К А</text>
+      </svg>
     </div>
 
     <p class="hero-sub a d1">Ваш универсальный магазин автозапчастей</p>
@@ -1042,16 +1028,16 @@
   <div class="footer-in">
 
     <a href="#home" class="logo logo-ft" aria-label="Механика — наверх">
-      <span class="logo-line">М Е Х А</span>
-      <span class="logo-kpp" style="margin:2px 0;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 48" fill="none" aria-hidden="true">
-          <line x1="4"  y1="24" x2="50" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-          <line x1="11" y1="19" x2="11" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-          <line x1="27" y1="4"  x2="27" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-          <line x1="43" y1="4"  x2="43" y2="29" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
-        </svg>
-      </span>
-      <span class="logo-line">Н И К А</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 222" fill="none">
+        <text font-family="'Bowler','Oswald',sans-serif" font-weight="700" font-size="62"
+              letter-spacing="16" fill="currentColor" text-anchor="middle" x="180" y="68">М Е Х А</text>
+        <line x1="22"  y1="76" x2="338" y2="76"  stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <line x1="100" y1="36" x2="100" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <line x1="180" y1="8"  x2="180" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <line x1="260" y1="8"  x2="260" y2="210" stroke="currentColor" stroke-width="12" stroke-linecap="butt"/>
+        <text font-family="'Bowler','Oswald',sans-serif" font-weight="700" font-size="62"
+              letter-spacing="16" fill="currentColor" text-anchor="middle" x="180" y="210">Н И К А</text>
+      </svg>
     </a>
 
     <ul class="footer-nav">
